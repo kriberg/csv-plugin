@@ -33,7 +33,6 @@ def home(request):
         'reports': reports,
         }, Ctx(request))
 
-@check_user_access()
 def csv_report(request, key):
     report = get_object_or_404(Report, key=key)
     return HttpResponse(report.generate_csv())

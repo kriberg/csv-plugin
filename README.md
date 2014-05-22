@@ -26,6 +26,12 @@ Go to the django admin site, csv -> add report. Select whatever filter you like.
 Go back to ECM and hit the CSV page. You should see a link to your report here.
 Open the report, use the URL in your google docs spreadsheet.
 
+*The generated URLs are not protected by your login, so don't go full retard*
+
+To be able to import these into your google docs spreadsheet, the URL needs to be open for everyone.
+So don't go pasting your URL to people. The generated key used in the URL is a SHA1 digest of the name
+and some random gibberish from random().
+
 Support
 -------
 
