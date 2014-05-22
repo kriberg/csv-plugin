@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% block headtitle %}{% trans 'CSV Reports' %}{% endblock %}
+
+
+{% block main_content %}
+<div class="page-header">
+{% block title %}<h1>{% trans 'CSV Reports' %}</h1>{% endblock %}
+</div>
+<ul class="list">
+    {% for report in reports %}
+    <li>
+        <a href="{% url "ext_plugins.csv.views.csv_report" report.key %}">{{ report.name }}</a>
+        ({% if report.stationID %}
+        <strong>Station:</strong>{{ report.station }}
+        {% else %}
+        {% if report.systemID %}
+        <strong>System:</strong>{{ report.system }}
+        {% endif %}
+        {% endif %}
+        {% if report.hangarID %}
+        <strong>Hangar:</strong>{{ report.hangar }}
+        {% endif %})
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
