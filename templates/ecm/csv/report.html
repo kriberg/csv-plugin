@@ -1,0 +1,9 @@
+<table>
+    {% for row in report.items %}
+    <tr>
+        <td>{{ row.eve_type__typeID }}</td>
+        <td>{{ row.eve_type__typeName }}</td>
+        <td>{{ row.total }}</td>
+    </tr>
+    {% endfor %}
+</table>
