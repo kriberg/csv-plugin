@@ -73,13 +73,9 @@ class Report(models.Model):
             assets = assets.filter(hangarID=self.hangarID)
         return assets
 
-    def generate_csv(self):
+    def items(self):
         assets = self.filter_assets()
-        aggregate = assets.values('eve_type__typeID', 'eve_type__typeName') \
+        return assets.values('eve_type__typeID', 'eve_type__typeName') \
                 .order_by('eve_type__typeName') \
                 .annotate(total=Sum('quantity'))
 
-        return "\n".join(map(lambda item: ';'.join((
-            unicode(item['eve_type__typeID']),
-            item['eve_type__typeName'],
-            unicode(item['total']))), aggregate))

@@ -35,4 +35,6 @@ def home(request):
 
 def csv_report(request, key):
     report = get_object_or_404(Report, key=key)
-    return HttpResponse(report.generate_csv())
+    return render_to_response('ecm/csv/report.html', {
+        'report': report,
+        }, Ctx(request))
